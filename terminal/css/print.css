@@ -1,0 +1,21 @@
+#rules {
+	width:21cm;
+	text-align:center;
+}
+#rules p, #rules h5  {
+	margin-bottom:10px;
+	margin-top:0px;
+}
+#rules p {
+	text-align:left;
+}
+
+.customerData {
+	font-weight:bold;
+	text-decoration:underline;
+}
+#childrens li {
+	list-style-image:none;
+	list-style-type:none;
+	
+}

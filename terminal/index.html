@@ -1,0 +1,238 @@
+﻿<!DOCTYPE html>
+<html lang="ru" xml:lang="ru">
+    <head>
+        <title>Анкета посетителя</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="libs/kbd/lib/css/jkeyboard.css">
+        <link rel="stylesheet" href="/css/robotocondensed.css" type="text/css" />
+        <link rel="stylesheet" href="/css/animate.css" />
+        <link rel="stylesheet" href="/css/Main.css" />
+        <script type="text/javascript" src="libs/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="libs/jquery.maskedinput.js"></script>
+        <script type="text/javascript" src="libs/kbd/lib/js/jkeyboard.js"></script>
+
+        <script type="text/javascript" src="libs/bootstrap/js/bootstrap.min.js"></script>
+
+        <script type="text/javascript" src="Config.js"></script>
+        <script type="text/javascript" src="js/LoaderUtils.js"></script>
+        <script type="text/javascript" src="js/checker.js"></script>
+        <script type="text/javascript" src="js/readCard.js"></script>
+        <script type="text/javascript" src="js/script.js"></script>
+        <script type="text/javascript" src="js/getphoto.js"></script>
+        <script type="text/javascript" src="js/painting.js"></script>
+        <script type="module" src="js/scanqrcert.js"></script>
+    </head>
+
+    <body>
+        <div id="stepNumber">
+        </div>
+        <div class="wrapper align-middle">
+            <div id="slideStart" class="slide visible animated fast">
+                <div class="startText">
+                    <span class="startText1">Проведите карту</span><br>
+                    <span class="startText2">через считыватель карт</span>
+                </div>
+
+                <input type="hidden" id="CardNumber">
+                <input type="button" id="isNoCard" class="btn button-big" value="У МЕНЯ НЕТ КАРТЫ">
+
+            </div>
+            <div id="slideClientSelect" class="slide invisible animated fast marginpanel">
+                <div class="ClientsList">
+                    <div class="row">
+                        <div class="col-4">
+                            <p class="i-card green1 mb-0" >Номер карты</p>
+                            <p id="sl_ClientSelect_Card" class="green1 h4"></p>
+                        </div>
+                        <div class="col-8 pl-70"><span id="substep1" class="substep animated pulse1 delay-5s infinite">1</span><h3>Выберите себя из списка</h3></div>
+                    </div>
+                    <p id="clientSelectErr" class="errorinput"></p>
+                    <div id="clientsList">
+                        <a href="javascript:void(0)" id="sl_ClientSelect_Add" class="btn btn-addClient">
+                            <div>
+                                <div class="text-center">
+                                    <img src="/images/add.png"><br/>
+                                    Меня нет в списке
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+
+                </div>
+                <div class="ClientDetails">
+                    <div class="pl-70">
+                        <span id="substep2" class="substep animated pulse1 delay-5s infinite">2</span>
+                        <h4 class="green1 font-weight-bold mb-3">Проверьте данные</h4>
+                    </div>
+                    <div>
+                        <p class="font-weight-bold">ФИО:</p>
+                        <p id="cls_FIO" class="h5 mb-3 minh-50"></p>
+                        <p class="font-weight-bold">Дата рождения:</p>
+                        <p id="cls_birthday" class="h5 mb-3 minh-25"></p>
+                        <p class="font-weight-bold">Телефон:</p>
+                        <p id="cls_phone" class="h5 mb-3 minh-25"></p>
+                        <p class="font-weight-bold">Адрес:</p>
+                        <p id="cls_address" class="h5 mb-3 minh-50"></p>
+                        <p class="font-weight-bold">Email:</p>
+                        <p id="cls_email" class="h5 mb-3 minh-25"></p>
+                    </div>
+                    <a href="javascript:void(0)" id="sl_ClientSelect_Edit" class="btn btn-edit invisible">РЕДАКТИРОВАТЬ<br/>данные</a>
+
+                </div>
+            </div>
+            <div id="slideOwnerFIO" class="slide invisible animated fast marginpanel">
+                <h3 id="OwnerInfoHeader">Введите информацию о владельце карты</h3>
+                <label for="OwnerFamily">Фамилия</label>
+                <input type="text" autocomplete="off" inputmode="none" id="OwnerFamily" class="form-control">
+                <p id="OwnerFamilyErr" class="errorinput"></p>
+                <label for="OwnerName">Имя</label>
+                <input type="text" autocomplete="off" inputmode="none" id="OwnerName" class="form-control">
+                <p id="OwnerNameErr" class="errorinput"></p>
+                <label for="OwnerSecondName">Отчество</label>
+                <input type="text" autocomplete="off" inputmode="none" id="OwnerSecondName" class="form-control">
+                <p id="OwnerSecondNameErr" class="errorinput"></p>
+                <label for="OwnerBirthday">Дата рождения</label>
+                <input type="text" autocomplete="off" inputmode="none" id="OwnerBirthday" class="form-control">
+                <p id="OwnerBirthdayErr" class="errorinput"></p>
+            </div>
+            <div id="slideOwnerContacts" class="slide invisible animated fast marginpanel">
+                <h3 id="OwnerContactsHeader">Введите контактную информацию владельца карты</h3>
+                <label for="OwnerPhone">Телефон</label>
+                <input type="text" autocomplete="off" inputmode="none" id="OwnerPhone" class="form-control">
+                <p id="OwnerPhoneErr" class="errorinput"></p>
+                <label for="OwnerAddress">Адрес</label>
+                <textarea autocomplete="off" inputmode="none" id="OwnerAddress" maxlength=255 class="form-control" rows=3></textarea>
+                <p id="OwnerAddressErr" class="errorinput"></p>
+                <label for="OwnerEmail">E-mail</label>
+                <input type="text" autocomplete="off" inputmode="none" id="OwnerEmail" class="form-control">
+                <p id="OwnerEmailErr" class="errorinput"></p>
+            </div>
+            <div id="slideOwnerPhoto" class="slide invisible animated fast marginpanel">
+                <h3 id="OwnerPhotoHeader">Ваше фото</h3>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4>Картинка с камеры</h4>
+                            <div class="video-container">
+                                <video id="video" width="600" height="400" autoplay></video>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>Фотография</h4>
+                            <canvas id="photo" width="300" height="400"></canvas>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+
+                    </div>
+                </div>
+            </div>
+            <div id="slideChildrens" class="slide invisible animated fast marginpanel">
+                <h4>Выберите детей, с которыми Вы пришли сегодня</h4>
+                <table id="ChildsList"></table>
+                <p><input type="button" id="AddChild" class="btn" value="Добавить ребенка"></p>
+                <h4 id="ChildrensCountInfo">Количество выбранных детей: <span id="ChildrensCount1"></span></h4>
+
+
+            </div>
+            <div id="slideCovidCert" class="slide invisible animated fast marginpanel">
+                <h4>QR-код сертификата профилактической прививки от COVID-19</h4>
+                <div>
+                    <video id="qrcam" width="400" height="400" autoplay></video>
+                </div>
+                <div id="qrcanvas"></div>
+                <div id="covidCertStatus"></div>
+                <div id="certDetails" class="invisible"></div>
+            </div>
+            <div id="slideRules" class="slide invisible animated fast marginpanel">
+                <div id="rules">
+
+                </div>
+            </div>
+            <div id="slideSuccess" class="slide invisible animated fast">
+                <img src="images/logo.png" class="logo">
+                <h2>Спасибо!</h2>
+                <h2>А теперь подойдите к кассиру</h2>
+                <h2>Хорошего отдыха!</h2>
+            </div>
+        </div>
+        <div id="bottom-panel" class="invisible d-flex justify-content-center align-items-center" >
+            <div class="bottom-back"><a href="javascript:void(0);" id="b-prev-step" class="btn text-center"><img src="/images/back.png"><br/>НАЗАД</a> </div>
+            <div class="bottom-center justify-content-center align-items-center">
+                <div id="keyboard-container" class="container-fluid  invisible"><div id="keyboard"></div></div>
+                <div id="d_photo" class="invisible">
+                    <input type="button" id="b_photo" class="btn take-photo" value=" ">
+                    <p id="b_photoErr" class="errorinput"></p>
+                </div>
+                <div id="confirm1" class="align-items-center justify-content-center">
+                    <div id="sign"></div>
+                    <div>
+                        <div class="checkConfirm">
+                            <input type="checkbox" id="checkConfirm">
+                            <label for="checkConfirm">Я прочитал и согласен с правилами</label>
+                            <p id="checkConfirmErr" class="errorinput"></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="bottom-next">
+                <a href="javascript:void(0);" id="b-next-step" class="btn text-center"><img src="/images/next.png"></br>ДАЛЕЕ</a>
+                <a href="javascript:void(0);" id="sendProfile" class="btn text-center invisible"><img src="/images/confirm.png"></br>ОТПРАВИТЬ</a>
+                <span id="substep3" class="substep invisible animated pulse1 delay-5s infinite">3</span>
+            </div>
+        </div>
+        <div id="loading-overlay">
+            <div id="loader"></div>
+        </div>
+
+        <div class="debugcontainer">
+            <div id="debugmsg">
+            </div>
+        </div>
+        <div id="paintSign" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Поставьте вашу подпись стилусом</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <canvas id="canvasSign"></canvas>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" id="sign_clear" class="btn" value="Очистить">
+                        <input type="button" id="sign_ok" class="btn" value="Подтвердить">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="ChildEdit" class="d-flex align-items-center justify-content-center invisible p-2">
+            <input type="button" id="CloseChild" class="btn close1" value="">
+            <input type="hidden" id="ChildID">
+            <div class="iconAction">
+
+            </div>
+            <div>
+                ДОБАВИТЬ<br/>РЕБЕНКА
+            </div>
+            <div style="max-width: 660px;">
+                <div>
+                    <label for="ChildFIO">ФИО ребенка:</label>
+                    <input type="text" autocomplete="off" inputmode="none"  id="ChildFIO" class="form-control">
+                    <p id="ChildFIOErr" class="errorinput"></p>
+                </div>
+                <div id="ChildBirthdayContainer">
+                    <label for="ChildBirthday">Дата рождения:</label>
+                    <input type="text" autocomplete="off" inputmode="none" id="ChildBirthday" class="form-control">
+                    <input type="button" id="SaveChild" class="btn" value="СОХРАНИТЬ">
+                </div>
+                <p id="ChildBirthdayErr" class="errorinput"></p>
+            </div>
+        </div>
+    </body>
+</html>
